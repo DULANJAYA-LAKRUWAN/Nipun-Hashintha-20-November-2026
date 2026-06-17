@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nipun &amp; Hashintha — 20 November 2026</title>
-  <meta name="description" content="Join Nipun and Hashintha as they celebrate their marriage on November 20, 2026 at Hillview Resort, Sri Lanka">
+  <title>Nipun &amp; Hashintha — 02 August 2026</title>
+  <meta name="description" content="Join Nipun and Hashintha as they celebrate their marriage on August 2, 2026 at Hillview Resort, Sri Lanka">
   <meta property="og:title" content="Nipun &amp; Hashintha — Wedding Invitation">
-  <meta property="og:description" content="Join us for our wedding celebration on November 20, 2026 at Hillview Resort, Sri Lanka">
+  <meta property="og:description" content="Join us for our wedding celebration on August 2, 2026 at Hillview Resort, Sri Lanka">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,7 +46,7 @@
     }
 
     /* =============================================
-       OPENING SCREEN
+       OPENING SCREEN REDESIGN
     ============================================= */
     #opening {
       position: fixed;
@@ -64,8 +64,8 @@
     }
 
     @keyframes openingFadeOut {
-      0% { opacity:1; transform:scale(1); }
-      100% { opacity:0; transform:scale(1.04); pointer-events:none; }
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(1.05); pointer-events: none; }
     }
 
     #opening-canvas {
@@ -75,6 +75,70 @@
       height: 100%;
     }
 
+    .opening-card-container {
+      position: relative;
+      z-index: 2;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .opening-card {
+      position: relative;
+      width: 100%;
+      max-width: 450px;
+      padding: 56px 40px;
+      background: rgba(253, 251, 246, 0.72);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(200, 162, 75, 0.3);
+      box-shadow: 
+        0 24px 70px rgba(26, 40, 32, 0.07), 
+        inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+      border-radius: 8px;
+      opacity: 0;
+      transform: scale(0.95) translateY(10px);
+      transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #opening.loaded .opening-card {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    .opening-card.exit {
+      transform: scale(1.08) translateY(-20px);
+      opacity: 0;
+      transition: all 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+
+    /* Corner floral/geometric decorations */
+    .card-decor {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      pointer-events: none;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+    }
+
+    #opening.loaded .card-decor {
+      opacity: 0.65;
+      transform: scale(1);
+    }
+
+    .card-decor-tl { top: 16px; left: 16px; }
+    .card-decor-tr { top: 16px; right: 16px; }
+    .card-decor-bl { bottom: 16px; left: 16px; }
+    .card-decor-br { bottom: 16px; right: 16px; }
+
     .opening-center {
       position: relative;
       z-index: 2;
@@ -83,13 +147,32 @@
       align-items: center;
       gap: 0;
       text-align: center;
+      width: 100%;
+    }
+
+    .op-monogram {
+      font-family: var(--ff-serif);
+      font-size: 1.5rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      margin-bottom: 24px;
+      opacity: 0;
+      transform: translateY(-5px);
+      transition: all 0.9s ease 0.2s;
+    }
+
+    #opening.loaded .op-monogram {
+      opacity: 0.8;
+      transform: translateY(0);
     }
 
     .op-names {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.25em;
+      gap: 0.2em;
     }
 
     .op-name {
@@ -97,52 +180,50 @@
       font-weight: 200;
       color: var(--forest);
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       line-height: 1;
       white-space: nowrap;
     }
 
     #op-nipun {
-      font-size: clamp(3rem, 8vw, 6rem);
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(15px);
       transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
     #op-hashintha {
-      font-size: clamp(3rem, 8vw, 6rem);
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
       opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.15s;
+      transform: translateY(15px);
+      transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
     .op-amp {
       font-family: var(--ff-serif);
       font-style: italic;
-      font-size: clamp(1.2rem, 3vw, 2.2rem);
+      font-size: clamp(1.2rem, 3vw, 2rem);
       font-weight: 300;
       color: var(--gold);
-      letter-spacing: 0.25em;
+      letter-spacing: 0.2em;
       line-height: 1;
       opacity: 0;
       transform: scale(0.7);
-      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s;
-      padding: 0.2em 0;
+      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+      padding: 0.15em 0;
     }
-
-    /* Opening names animated via JS direct style manipulation */
 
     .op-line {
       width: 0;
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 32px auto 0;
+      margin: 28px auto 0;
       transition: width 0.8s cubic-bezier(0.25,1,0.5,1);
     }
 
     .op-subtitle {
       font-family: var(--ff-sans);
-      font-size: clamp(0.6rem, 1.5vw, 0.75rem);
+      font-size: clamp(0.6rem, 1.5vw, 0.7rem);
       font-weight: 500;
       letter-spacing: 0.35em;
       color: var(--gold);
@@ -150,57 +231,135 @@
       opacity: 0;
       transform: translateY(10px);
       transition: all 0.7s ease;
-      margin-top: 20px;
+      margin-top: 18px;
     }
 
     .op-date {
       font-family: var(--ff-serif);
-      font-size: clamp(0.9rem, 2vw, 1.15rem);
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
       font-weight: 300;
       font-style: italic;
       color: var(--text-mid);
       opacity: 0;
       transform: translateY(8px);
-      transition: all 0.7s ease 0.2s;
+      transition: all 0.7s ease;
       margin-top: 8px;
     }
 
+    /* Wax Seal Button styling */
     .op-enter-btn {
-      margin-top: 44px;
+      margin-top: 36px;
       opacity: 0;
       transform: translateY(16px);
-      transition: all 0.7s ease 0.3s;
+      transition: all 0.8s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    .op-enter-btn button {
-      background: none;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      font-family: var(--ff-sans);
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      padding: 14px 40px;
+    .wax-seal-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
       cursor: pointer;
-      transition: all 0.4s ease;
       position: relative;
-      overflow: hidden;
     }
 
-    .op-enter-btn button::before {
+    .wax-seal {
+      width: 76px;
+      height: 76px;
+      animation: sealBreathe 3s ease-in-out infinite;
+      transform-origin: center;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.4s ease;
+      filter: drop-shadow(0 4px 12px rgba(26, 40, 32, 0.15));
+    }
+
+    .wax-seal svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .wax-seal-wrapper:hover .wax-seal {
+      animation-play-state: paused;
+      transform: scale(1.08) rotate(4deg);
+      filter: drop-shadow(0 8px 20px rgba(200, 162, 75, 0.35)) brightness(1.03);
+    }
+
+    .wax-seal-wrapper:active .wax-seal {
+      transform: scale(0.94) rotate(-2deg);
+      filter: drop-shadow(0 2px 6px rgba(26, 40, 32, 0.2));
+    }
+
+    .wax-seal.broken {
+      animation: sealBreak 0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards !important;
+    }
+
+    .wax-seal-hint {
+      font-family: var(--ff-sans);
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .wax-seal-hint::after {
       content: '';
       position: absolute;
-      inset: 0;
-      background: var(--gold);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s ease;
+      bottom: -4px;
+      left: 50%;
+      width: 0;
+      height: 1px;
+      background: var(--gold-light);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
     }
 
-    .op-enter-btn button:hover::before { transform: scaleX(1); }
-    .op-enter-btn button:hover { color: var(--cream); }
-    .op-enter-btn button span { position: relative; z-index: 1; }
+    .wax-seal-wrapper:hover .wax-seal-hint {
+      opacity: 1;
+      color: var(--gold-light);
+      letter-spacing: 0.32em;
+    }
+
+    .wax-seal-wrapper:hover .wax-seal-hint::after {
+      width: 40px;
+    }
+
+    @keyframes sealBreathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+
+    @keyframes sealBreak {
+      0% { transform: scale(1); }
+      25% { transform: scale(0.85); filter: brightness(1.15); }
+      100% { transform: scale(1.5); opacity: 0; filter: blur(4px); }
+    }
+
+    @media (max-width: 480px) {
+      .opening-card {
+        padding: 44px 28px;
+      }
+      .card-decor {
+        width: 32px;
+        height: 32px;
+      }
+      .card-decor-tl { top: 12px; left: 12px; }
+      .card-decor-tr { top: 12px; right: 12px; }
+      .card-decor-bl { bottom: 12px; left: 12px; }
+      .card-decor-br { bottom: 12px; right: 12px; }
+      .op-monogram {
+        margin-bottom: 16px;
+      }
+      .op-line {
+        margin: 24px auto 0;
+      }
+    }
 
     /* =============================================
        NAV
@@ -348,7 +507,8 @@
       gap: 0.3em;
     }
 
-    .hero-names .name-groom{
+    .hero-names .name-groom,
+    .hero-names .name-bride {
       font-size: clamp(3.5rem, 9vw, 7.5rem);
       font-weight: 200;
       text-transform: uppercase;
@@ -846,46 +1006,170 @@
     .lightbox-close:hover { color: var(--gold); }
 
     /* =============================================
-       PROGRAM
+       PROGRAM — Premium Timeline
     ============================================= */
     #program {
-      padding: 120px 24px;
-      background: var(--cream);
-    }
-
-    .program-grid {
-      max-width: 900px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2px;
-    }
-
-    .program-card {
-      background: var(--ivory);
-      padding: 40px 32px;
-      border-top: 2px solid var(--gold);
-      transition: background 0.4s, transform 0.4s;
-    }
-
-    .program-card:hover {
+      padding: 120px 24px 140px;
       background: var(--forest);
-      transform: translateY(-4px);
+      position: relative;
+      overflow: hidden;
     }
 
-    .program-card:hover .prog-title,
-    .program-card:hover .prog-detail { color: var(--ivory); }
+    #program::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse 600px 400px at 20% 30%, rgba(200,162,75,0.06), transparent),
+        radial-gradient(ellipse 500px 500px at 80% 70%, rgba(200,162,75,0.04), transparent);
+      pointer-events: none;
+    }
 
-    .program-card:hover .prog-icon { color: var(--gold); }
-    .program-card:hover .prog-time { color: var(--gold-light); }
+    #program .section-label { color: var(--gold-light); }
+    #program .section-title { color: var(--ivory); }
 
+    .program-date-badge {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .program-date-badge span {
+      display: inline-block;
+      font-family: var(--ff-sans);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(200,162,75,0.3);
+      padding: 10px 28px;
+      background: rgba(200,162,75,0.06);
+    }
+
+    /* Timeline container */
+    .prog-timeline {
+      position: relative;
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+
+    /* Gold center spine */
+    .prog-timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(200,162,75,0.15) 5%,
+        rgba(200,162,75,0.35) 50%,
+        rgba(200,162,75,0.15) 95%,
+        transparent
+      );
+      transform: translateX(-50%);
+    }
+
+    /* Individual timeline row */
+    .prog-row {
+      display: flex;
+      align-items: center;
+      position: relative;
+      margin-bottom: 28px;
+    }
+
+    .prog-row:last-child { margin-bottom: 0; }
+
+    /* Left-side card (odd items) */
+    .prog-row:nth-child(odd) {
+      flex-direction: row;
+    }
+
+    .prog-row:nth-child(odd) .prog-card {
+      margin-right: auto;
+      margin-left: 0;
+    }
+
+    /* Right-side card (even items) */
+    .prog-row:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .prog-row:nth-child(even) .prog-card {
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    /* The card itself */
+    .prog-card {
+      width: calc(50% - 48px);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(200,162,75,0.12);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      padding: 36px 32px;
+      position: relative;
+      transition: transform 0.45s cubic-bezier(0.25,1,0.5,1),
+                  box-shadow 0.45s ease,
+                  border-color 0.45s ease,
+                  background 0.45s ease;
+    }
+
+    .prog-card:hover {
+      transform: translateY(-6px);
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(200,162,75,0.3);
+      box-shadow:
+        0 20px 50px rgba(0,0,0,0.25),
+        0 0 30px rgba(200,162,75,0.06);
+    }
+
+    /* Numbered badge on the center spine */
+    .prog-step {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--forest);
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-serif);
+      font-size: 0.85rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--gold);
+      z-index: 2;
+      transition: background 0.4s, transform 0.4s, box-shadow 0.4s;
+    }
+
+    .prog-row:hover .prog-step {
+      background: var(--gold);
+      color: var(--forest);
+      transform: translateX(-50%) scale(1.15);
+      box-shadow: 0 0 20px rgba(200,162,75,0.3);
+    }
+
+    /* Card inner elements */
     .prog-icon {
-      color: var(--sage);
-      margin-bottom: 20px;
-      transition: color 0.4s;
+      color: var(--gold);
+      margin-bottom: 16px;
+      opacity: 0.7;
+      transition: opacity 0.4s, transform 0.4s;
     }
 
-    .prog-icon svg { width: 28px; height: 28px; }
+    .prog-card:hover .prog-icon {
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+
+    .prog-icon svg { width: 26px; height: 26px; }
 
     .prog-time {
       font-family: var(--ff-sans);
@@ -893,27 +1177,93 @@
       font-weight: 500;
       letter-spacing: 0.35em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--gold-light);
       margin-bottom: 8px;
-      transition: color 0.4s;
     }
 
     .prog-title {
       font-family: var(--ff-display);
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 300;
       font-style: italic;
-      color: var(--forest);
+      color: var(--ivory);
       transition: color 0.4s;
     }
+
+    .prog-card:hover .prog-title { color: var(--gold-light); }
 
     .prog-detail {
       font-family: var(--ff-sans);
       font-size: 0.72rem;
-      color: var(--text-light);
-      margin-top: 6px;
-      line-height: 1.6;
+      color: rgba(255,255,255,0.45);
+      margin-top: 8px;
+      line-height: 1.7;
       transition: color 0.4s;
+    }
+
+    .prog-card:hover .prog-detail { color: rgba(255,255,255,0.65); }
+
+    /* Decorative connector lines from card to spine */
+    .prog-card::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 24px;
+      height: 1px;
+      background: rgba(200,162,75,0.2);
+    }
+
+    .prog-row:nth-child(odd) .prog-card::after {
+      right: -24px;
+    }
+
+    .prog-row:nth-child(even) .prog-card::after {
+      left: -24px;
+    }
+
+    /* Scroll reveal for program rows */
+    .prog-row.reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.25,1,0.5,1);
+    }
+
+    .prog-row.reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+      .prog-timeline::before {
+        left: 20px;
+      }
+
+      .prog-row,
+      .prog-row:nth-child(odd),
+      .prog-row:nth-child(even) {
+        flex-direction: row;
+      }
+
+      .prog-card,
+      .prog-row:nth-child(odd) .prog-card,
+      .prog-row:nth-child(even) .prog-card {
+        width: calc(100% - 60px);
+        margin-left: auto;
+        margin-right: 0;
+      }
+
+      .prog-step {
+        left: 20px;
+        position: absolute;
+        width: 34px;
+        height: 34px;
+        font-size: 0.75rem;
+      }
+
+      .prog-card::after { display: none; }
+
+      .prog-row:nth-child(even) .prog-card::after { display: none; }
     }
 
     /* =============================================
@@ -1489,21 +1839,70 @@
 <body>
 
   <!-- =============================================
-       OPENING SCREEN
+       OPENING SCREEN REDESIGN
   ============================================= -->
   <div id="opening">
     <canvas id="opening-canvas"></canvas>
-    <div class="opening-center">
-      <div class="op-names">
-        <div class="op-name" id="op-nipun">Nipun</div>
-          <div class="op-amp" id="op-amp">&amp;</div>
-          <div class="op-name" id="op-hashintha">Hashintha</div>
-      </div>
-      <div class="op-line" id="op-line"></div>
-      <div class="op-subtitle" id="op-subtitle">We Are Getting Married</div>
-      <div class="op-date" id="op-date">20 · November · 2026</div>
-      <div class="op-enter-btn" id="op-btn">
-        <button onclick="enterSite()"><span>Open Invitation</span></button>
+    <div class="opening-card-container">
+      <div class="opening-card" id="op-card">
+        <!-- Botanical/Geometric Corner Accents -->
+        <div class="card-decor card-decor-tl">
+          <svg viewBox="0 0 100 100" fill="none" stroke="var(--gold)" stroke-width="1.5">
+            <path d="M 10,40 L 10,10 L 40,10 M 18,32 L 18,18 L 32,18 M 10,10 L 32,32" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="card-decor card-decor-tr">
+          <svg viewBox="0 0 100 100" fill="none" stroke="var(--gold)" stroke-width="1.5">
+            <path d="M 90,40 L 90,10 L 60,10 M 82,32 L 82,18 L 68,18 M 90,10 L 68,32" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="card-decor card-decor-bl">
+          <svg viewBox="0 0 100 100" fill="none" stroke="var(--gold)" stroke-width="1.5">
+            <path d="M 10,60 L 10,90 L 40,90 M 18,68 L 18,82 L 32,82 M 10,90 L 32,68" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="card-decor card-decor-br">
+          <svg viewBox="0 0 100 100" fill="none" stroke="var(--gold)" stroke-width="1.5">
+            <path d="M 90,60 L 90,90 L 60,90 M 82,68 L 82,82 L 68,82 M 90,90 L 68,68" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <div class="opening-center">
+          <div class="op-monogram">N &amp; H</div>
+          <div class="op-names">
+            <div class="op-name" id="op-nipun">Nipun</div>
+            <div class="op-amp" id="op-amp">&amp;</div>
+            <div class="op-name" id="op-hashintha">Hashintha</div>
+          </div>
+          <div class="op-line" id="op-line"></div>
+          <div class="op-subtitle" id="op-subtitle">We Are Getting Married</div>
+          <div class="op-date" id="op-date">02 · August · 2026</div>
+          <div class="op-enter-btn" id="op-btn">
+            <div class="wax-seal-wrapper" onclick="enterSite()">
+              <div class="wax-seal" id="wax-seal">
+                <svg viewBox="0 0 100 100" aria-hidden="true">
+                  <defs>
+                    <radialGradient id="wax-grad" cx="45%" cy="45%" r="55%">
+                      <stop offset="0%" stop-color="#FDFBF6"/>
+                      <stop offset="25%" stop-color="#E2C97E"/>
+                      <stop offset="65%" stop-color="#C8A24B"/>
+                      <stop offset="90%" stop-color="#9E7B2F"/>
+                      <stop offset="100%" stop-color="#6F5119"/>
+                    </radialGradient>
+                    <filter id="wax-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                      <feDropShadow dx="1" dy="3" stdDeviation="3" flood-color="#1A2820" flood-opacity="0.3"/>
+                    </filter>
+                  </defs>
+                  <path d="M 50,6 C 68,5 83,11 92,26 C 98,37 95,54 92,69 C 89,82 82,93 67,95 C 53,97 37,93 25,87 C 13,81 3,68 4,51 C 5,34 16,19 30,9 C 38,4 44,5 50,6 Z" fill="url(#wax-grad)" filter="url(#wax-shadow)" />
+                  <circle cx="50" cy="50" r="31" fill="none" stroke="#6F5119" stroke-width="1.5" opacity="0.3"/>
+                  <text x="50%" y="58%" font-family="var(--ff-serif)" font-weight="300" font-size="28" font-style="italic" fill="#4B350A" text-anchor="middle" letter-spacing="-1">N&amp;H</text>
+                  <circle cx="50" cy="50" r="26" fill="none" stroke="#4B350A" stroke-width="0.8" opacity="0.25" stroke-dasharray="2,2"/>
+                </svg>
+              </div>
+              <span class="wax-seal-hint">Tap to Open</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1539,7 +1938,7 @@
       <canvas id="hero-canvas"></canvas>
 
       <div class="hero-content">
-        <div class="hero-eyebrow" id="h-eyebrow">20 · November · 2026 · Sri Lanka</div>
+        <div class="hero-eyebrow" id="h-eyebrow">02 · August · 2026 · Sri Lanka</div>
         <h1 class="hero-names" id="h-names">
           <span class="name-groom">Nipun</span>
           <span class="connector" aria-hidden="true">&amp;</span>
@@ -1756,71 +2155,99 @@
         <h2 class="section-title">Wedding <em>Program</em></h2>
       </div>
 
-      <div class="program-grid">
-        <div class="program-card reveal">
-          <div class="prog-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-            </svg>
+      <div class="program-date-badge reveal">
+        <span>Sunday · 02 August 2026 · Ceremony begins 9:00 AM</span>
+      </div>
+
+      <div class="prog-timeline">
+        <!-- 1 — Guest Arrival -->
+        <div class="prog-row reveal">
+          <div class="prog-card">
+            <div class="prog-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div class="prog-time">9:00 AM</div>
+            <div class="prog-title">Guest Arrival</div>
+            <div class="prog-detail">Welcome drinks &amp; mingling as guests find their seats at the venue</div>
           </div>
-          <div class="prog-time">3:00 PM</div>
-          <div class="prog-title">Guest Arrival</div>
-          <div class="prog-detail">Welcome drinks and mingling as guests find their seats</div>
+          <div class="prog-step">1</div>
         </div>
 
-        <div class="program-card reveal" style="transition-delay:0.08s">
-          <div class="prog-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-            </svg>
+        <!-- 2 — Poruwa Ceremony -->
+        <div class="prog-row reveal" style="transition-delay:0.08s">
+          <div class="prog-card">
+            <div class="prog-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </div>
+            <div class="prog-time">9:50 AM</div>
+            <div class="prog-title">Poruwa Ceremony</div>
+            <div class="prog-detail">The sacred traditional Sri Lankan ceremony where two souls are united as one</div>
           </div>
-          <div class="prog-time">3:30 PM</div>
-          <div class="prog-title">Poruwa Ceremony</div>
-          <div class="prog-detail">The traditional Sri Lankan ceremony where two souls become one</div>
+          <div class="prog-step">2</div>
         </div>
 
-        <div class="program-card reveal" style="transition-delay:0.16s">
-          <div class="prog-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
+        <!-- 3 — Reception -->
+        <div class="prog-row reveal" style="transition-delay:0.16s">
+          <div class="prog-card">
+            <div class="prog-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <div class="prog-time">10:00 AM – 2:00 PM</div>
+            <div class="prog-title">Reception</div>
+            <div class="prog-detail">Welcome guests with celebration, music, and warm festive atmosphere</div>
           </div>
-          <div class="prog-time">5:00 PM</div>
-          <div class="prog-title">Reception</div>
-          <div class="prog-detail">Cocktail hour with live music, laughter, and celebration</div>
+          <div class="prog-step">3</div>
         </div>
 
-        <div class="program-card reveal" style="transition-delay:0.24s">
-          <div class="prog-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-              <path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
-            </svg>
+        <!-- 4 — Wedding Lunch -->
+        <div class="prog-row reveal" style="transition-delay:0.24s">
+          <div class="prog-card">
+            <div class="prog-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+              </svg>
+            </div>
+            <div class="prog-time">12:01 PM</div>
+            <div class="prog-title">Wedding Lunch</div>
+            <div class="prog-detail">A feast of flavours — Sri Lankan cuisine and beyond, shared with loved ones</div>
           </div>
-          <div class="prog-time">7:00 PM</div>
-          <div class="prog-title">Wedding Dinner</div>
-          <div class="prog-detail">A feast of flavours under the stars — Sri Lankan cuisine and beyond</div>
+          <div class="prog-step">4</div>
         </div>
 
-        <div class="program-card reveal" style="transition-delay:0.32s">
-          <div class="prog-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-              <circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
-            </svg>
+        <!-- 5 — First Dance -->
+        <div class="prog-row reveal" style="transition-delay:0.32s">
+          <div class="prog-card">
+            <div class="prog-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+              </svg>
+            </div>
+            <div class="prog-time">1:00 PM</div>
+            <div class="prog-title">First Dance</div>
+            <div class="prog-detail">Our first moment together as husband and wife on the dance floor</div>
           </div>
-          <div class="prog-time">8:30 PM</div>
-          <div class="prog-title">First Dance</div>
-          <div class="prog-detail">Our first moment together as husband and wife on the dance floor</div>
+          <div class="prog-step">5</div>
         </div>
 
-        <div class="program-card reveal" style="transition-delay:0.40s">
-          <div class="prog-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-            </svg>
+        <!-- 6 — Cake & Farewell -->
+        <div class="prog-row reveal" style="transition-delay:0.40s">
+          <div class="prog-card">
+            <div class="prog-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <div class="prog-time">3:40 PM</div>
+            <div class="prog-title">Cake &amp; Farewell</div>
+            <div class="prog-detail">Sweet moments, heartfelt goodbyes, and memories to last a lifetime</div>
           </div>
-          <div class="prog-time">9:00 PM</div>
-          <div class="prog-title">Cake &amp; Farewell</div>
-          <div class="prog-detail">Sweet moments, heartfelt goodbyes, and memories to last forever</div>
+          <div class="prog-step">6</div>
         </div>
       </div>
     </section>
@@ -2036,7 +2463,7 @@
   ============================================= -->
   <footer>
     <div class="footer-monogram">N &amp; H</div>
-    <div class="footer-date-small">20 · November · 2026 · Sri Lanka</div>
+    <div class="footer-date-small">02 · August · 2026 · Sri Lanka</div>
     <div class="footer-line"></div>
     <p class="footer-quote">With all our love, and looking forward to celebrating with you.</p>
     <p class="footer-credit">Made with love for our special day</p>
@@ -2081,10 +2508,22 @@
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = p.gold ? `rgba(200,162,75,${p.a})` : `rgba(26,40,32,${p.a * 0.4})`;
         ctx.fill();
+        
+        // Custom gravity/friction for click burst particles
+        if (p.friction) {
+          p.vx *= p.friction;
+          p.vy *= p.friction;
+          p.vy += p.gravity;
+          p.a *= 0.97; // fade out
+        }
+        
         p.x += p.vx;
         p.y += p.vy;
-        if (p.x < 0 || p.x > W) p.vx *= -1;
-        if (p.y < 0 || p.y > H) p.vy *= -1;
+        
+        if (!p.friction) {
+          if (p.x < 0 || p.x > W) p.vx *= -1;
+          if (p.y < 0 || p.y > H) p.vy *= -1;
+        }
       });
     }
 
@@ -2094,6 +2533,12 @@
       animFrame = requestAnimationFrame(loop);
     }
     loop();
+
+    // Trigger loaded class on card
+    setTimeout(() => {
+      const opening = document.getElementById('opening');
+      if (opening) opening.classList.add('loaded');
+    }, 150);
 
     // Simple fade-in for opening names and ampersand
     function fadeInElement(id, delay) {
@@ -2107,55 +2552,105 @@
     }
 
     // Sequence using new IDs
-    fadeInElement('op-nipun', 400);
+    fadeInElement('op-nipun', 600);
     setTimeout(() => {
       const amp = document.getElementById('op-amp');
-      amp.style.transition = 'all 0.6s cubic-bezier(0.34,1.56,0.64,1)';
-      amp.style.opacity = '1';
-      amp.style.transform = 'scale(1)';
-    }, 900);
-    fadeInElement('op-hashintha', 1100);
+      if (amp) {
+        amp.style.transition = 'all 0.6s cubic-bezier(0.34,1.56,0.64,1)';
+        amp.style.opacity = '1';
+        amp.style.transform = 'scale(1)';
+      }
+    }, 1100);
+    fadeInElement('op-hashintha', 1300);
 
-    // Expand line and reveal other elements as before
+    // Expand line and reveal other elements
     setTimeout(() => {
       const line = document.getElementById('op-line');
-      line.style.transition = 'width 0.9s cubic-bezier(0.25,1,0.5,1)';
-      line.style.width = '280px';
-    }, 2200);
+      if (line) {
+        line.style.transition = 'width 1.2s cubic-bezier(0.25,1,0.5,1)';
+        line.style.width = '240px';
+      }
+    }, 2400);
 
     setTimeout(() => {
       const sub = document.getElementById('op-subtitle');
-      sub.style.transition = 'all 0.7s ease';
-      sub.style.opacity = '1';
-      sub.style.transform = 'translateY(0)';
-    }, 2600);
+      if (sub) {
+        sub.style.transition = 'all 0.8s cubic-bezier(0.25,1,0.5,1)';
+        sub.style.opacity = '1';
+        sub.style.transform = 'translateY(0)';
+      }
+    }, 2800);
 
     setTimeout(() => {
       const d = document.getElementById('op-date');
-      d.style.transition = 'all 0.7s ease';
-      d.style.opacity = '1';
-      d.style.transform = 'translateY(0)';
-    }, 3000);
+      if (d) {
+        d.style.transition = 'all 0.8s cubic-bezier(0.25,1,0.5,1)';
+        d.style.opacity = '1';
+        d.style.transform = 'translateY(0)';
+      }
+    }, 3200);
 
     setTimeout(() => {
       const btn = document.getElementById('op-btn');
-      btn.style.transition = 'all 0.7s ease';
-      btn.style.opacity = '1';
-      btn.style.transform = 'translateY(0)';
-    }, 3500);
+      if (btn) {
+        btn.style.transition = 'all 0.8s cubic-bezier(0.25,1,0.5,1)';
+        btn.style.opacity = '1';
+        btn.style.transform = 'translateY(0)';
+      }
+    }, 3700);
+
+    // Custom particle burst trigger
+    window._triggerOpeningBurst = () => {
+      particles = [];
+      const seal = document.getElementById('wax-seal');
+      const rect = seal ? seal.getBoundingClientRect() : null;
+      const startX = rect ? rect.left + rect.width / 2 : W / 2;
+      const startY = rect ? rect.top + rect.height / 2 : H / 2;
+
+      for (let i = 0; i < 120; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 3.5 + 1.5;
+        particles.push({
+          x: startX,
+          y: startY,
+          r: Math.random() * 2.5 + 0.8,
+          a: Math.random() * 0.8 + 0.2,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed - 1.2, // bias upwards slightly
+          gold: Math.random() > 0.4,
+          friction: 0.98,
+          gravity: 0.08
+        });
+      }
+    };
 
     window._stopOpeningCanvas = () => cancelAnimationFrame(animFrame);
   })();
 
   function enterSite() {
+    const seal = document.getElementById('wax-seal');
+    const card = document.getElementById('op-card');
     const opening = document.getElementById('opening');
-    opening.classList.add('fade-out');
+
+    if (seal) seal.classList.add('broken');
+    if (card) card.classList.add('exit');
+    
+    // Trigger particle burst
+    if (window._triggerOpeningBurst) {
+      window._triggerOpeningBurst();
+    }
+
+    setTimeout(() => {
+      opening.classList.add('fade-out');
+    }, 350);
+
     window._stopOpeningCanvas && window._stopOpeningCanvas();
+    
     setTimeout(() => {
       opening.style.display = 'none';
       document.body.style.overflow = '';
       animateHero();
-    }, 1200);
+    }, 1500);
   }
 
   document.body.style.overflow = 'hidden';
@@ -2236,7 +2731,7 @@
      COUNTDOWN
   ============================================= */
   function updateCountdown() {
-    const target = new Date('2026-11-20T15:30:00+05:30');
+    const target = new Date('2026-08-02T09:00:00+05:30');
     const now = new Date();
     const diff = target - now;
 
