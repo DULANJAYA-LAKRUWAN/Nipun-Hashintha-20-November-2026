@@ -26,7 +26,21 @@ function initApp() {
     
     // Add scroll reveal observer
     initScrollReveal();
+    
+    // Trigger hero names animation
+    initHeroAnimation();
   }, 2000);
+}
+
+// Initialize hero names animation
+function initHeroAnimation() {
+  const heroNames = document.querySelector('.hero-names');
+  if (heroNames) {
+    // Trigger animation after a brief delay to ensure opening screen has faded
+    setTimeout(() => {
+      heroNames.classList.add('loaded');
+    }, 500);
+  }
 }
 
 // Scroll reveal initialization

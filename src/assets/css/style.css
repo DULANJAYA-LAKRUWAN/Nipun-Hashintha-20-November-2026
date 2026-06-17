@@ -520,32 +520,45 @@ main {
 }
 
 .hero-names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-family: var(--font-primary);
   font-weight: 300;
   font-size: clamp(48px, 8vw, 96px);
-  line-height: 0.9;
+  line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--forest-green);
   margin-bottom: var(--space-xl);
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards 3.8s;
+  opacity: 1; /* ensure names are visible */
+  visibility: visible; /* fallback for older browsers */
 }
 
-.name-first,
-.name-last {
+.hero-names .name-groom,
+.hero-names .name-bride {
   display: block;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: nameReveal 0.8s ease forwards;
+  font-family: "Playfair Display", serif; /* premium serif */
+  font-weight: 400;
+  color: var(--forest-green);
+  line-height: 1.1;
+}
+/* Removed unused animation delay */
+
+.hero-names .connector {
+  font-size: 0.45em; /* smaller ampersand */
+  margin: 0.3em 0;
+  color: var(--gold);
+  font-family: var(--font-primary);
+  font-weight: 300;
+}
+.hero-names.loaded,
+.hero-names.visible {
+  opacity: 1;
+  visibility: visible;
 }
 
-.name-first {
-  animation-delay: 3.9s;
-}
 
-.name-last {
-  animation-delay: 4.1s;
-}
+/* Removed unused .name-first/.name-last animation block */
 
 .connector {
   display: block;

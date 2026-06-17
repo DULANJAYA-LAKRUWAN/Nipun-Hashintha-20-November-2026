@@ -87,38 +87,50 @@
 
     .op-names {
       display: flex;
-      align-items: flex-end;
-      gap: 28px;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25em;
     }
 
     .op-name {
-      font-family: var(--ff-display);
-      font-size: clamp(2.8rem, 8vw, 6.5rem);
+      font-family: var(--ff-serif);
       font-weight: 200;
       color: var(--forest);
+      text-transform: uppercase;
       letter-spacing: 0.12em;
       line-height: 1;
-      overflow: hidden;
+      white-space: nowrap;
     }
 
-    .op-name span {
-      display: inline-block;
+    #op-nipun {
+      font-size: clamp(3rem, 8vw, 6rem);
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(20px);
+      transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    #op-hashintha {
+      font-size: clamp(3rem, 8vw, 6rem);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.15s;
     }
 
     .op-amp {
       font-family: var(--ff-serif);
-      font-size: clamp(2rem, 5vw, 4rem);
-      font-weight: 300;
       font-style: italic;
+      font-size: clamp(1.2rem, 3vw, 2.2rem);
+      font-weight: 300;
       color: var(--gold);
-      opacity: 0;
-      transform: scale(0.6);
-      transition: all 0.6s cubic-bezier(0.34,1.56,0.64,1);
+      letter-spacing: 0.25em;
       line-height: 1;
-      padding-bottom: 0.1em;
+      opacity: 0;
+      transform: scale(0.7);
+      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s;
+      padding: 0.2em 0;
     }
+
+    /* Opening names animated via JS direct style manipulation */
 
     .op-line {
       width: 0;
@@ -289,9 +301,9 @@
       inset: 0;
       background: linear-gradient(
         180deg,
-        rgba(26,40,32,0.35) 0%,
-        rgba(26,40,32,0.55) 50%,
-        rgba(26,40,32,0.75) 100%
+        rgba(245,241,232,0.85) 0%,
+        rgba(245,241,232,0.65) 50%,
+        rgba(245,241,232,0.9) 100%
       );
     }
 
@@ -316,32 +328,45 @@
       font-weight: 500;
       letter-spacing: 0.4em;
       text-transform: uppercase;
-      color: var(--gold-light);
+      color: var(--gold);
       opacity: 0;
       transform: translateY(20px);
       margin-bottom: 28px;
     }
 
     .hero-names {
-      font-family: var(--ff-display);
-      font-size: clamp(3.5rem, 10vw, 8rem);
-      font-weight: 200;
-      color: #fff;
-      line-height: 0.95;
-      letter-spacing: 0.04em;
+      font-family: var(--ff-serif);
+      font-weight: 300;
+      color: var(--forest);
+      line-height: 1.1;
+      letter-spacing: 0.02em;
       opacity: 0;
       transform: translateY(30px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3em;
     }
 
+    .hero-names .name-groom{
+      font-size: clamp(3.5rem, 9vw, 7.5rem);
+      font-weight: 200;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    /* Hero name children are visible once parent reveals — no child opacity overrides */
     .hero-names .connector {
-      display: block;
       font-family: var(--ff-serif);
       font-style: italic;
-      font-size: clamp(1.4rem, 3.5vw, 2.8rem);
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
       font-weight: 300;
-      color: var(--gold-light);
-      margin: 8px 0;
-      letter-spacing: 0.15em;
+      color: var(--gold);
+      letter-spacing: 0.25em;
+      line-height: 1;
+      padding: 0.15em 0;
     }
 
     .hero-divider {
@@ -359,7 +384,7 @@
       font-size: clamp(1rem, 2.5vw, 1.4rem);
       font-weight: 300;
       font-style: italic;
-      color: rgba(255,255,255,0.85);
+      color: var(--text-mid);
       letter-spacing: 0.1em;
       opacity: 0;
       transform: translateY(15px);
@@ -371,7 +396,7 @@
       font-weight: 400;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
+      color: var(--text-light);
       margin-top: 8px;
       opacity: 0;
       transform: translateY(10px);
@@ -390,14 +415,14 @@
     .cd-item {
       text-align: center;
       padding: 20px 28px;
-      background: rgba(255,255,255,0.06);
+      background: rgba(245,241,232,0.8);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(200,162,75,0.2);
+      border: 1px solid rgba(200,162,75,0.3);
       border-right: none;
       min-width: 90px;
     }
 
-    .cd-item:last-child { border-right: 1px solid rgba(200,162,75,0.2); }
+    .cd-item:last-child { border-right: 1px solid rgba(200,162,75,0.3); }
     .cd-item:first-child { border-radius: 2px 0 0 2px; }
     .cd-item:last-child { border-radius: 0 2px 2px 0; }
 
@@ -405,7 +430,7 @@
       font-family: var(--ff-display);
       font-size: clamp(1.8rem, 4vw, 2.8rem);
       font-weight: 200;
-      color: #fff;
+      color: var(--forest);
       line-height: 1;
       letter-spacing: 0.02em;
     }
@@ -416,7 +441,7 @@
       font-weight: 500;
       letter-spacing: 0.35em;
       text-transform: uppercase;
-      color: var(--gold-light);
+      color: var(--sage);
       margin-top: 6px;
     }
 
@@ -455,8 +480,8 @@
       letter-spacing: 0.3em;
       text-transform: uppercase;
       background: none;
-      color: rgba(255,255,255,0.8);
-      border: 1px solid rgba(255,255,255,0.3);
+      color: var(--forest);
+      border: 1px solid var(--forest);
       padding: 16px 36px;
       cursor: pointer;
       text-decoration: none;
@@ -464,7 +489,7 @@
       display: inline-block;
     }
 
-    .btn-outline:hover { border-color: var(--gold-light); color: var(--gold-light); }
+    .btn-outline:hover { background: var(--forest); color: var(--cream); }
 
     .scroll-hint {
       position: absolute;
@@ -1422,6 +1447,43 @@
       90% { opacity: 0.4; }
       100% { transform: translateY(100vh) rotate(480deg); opacity: 0; }
     }
+
+    /* =============================================
+       BACK TO TOP
+    ============================================= */
+    .back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 48px;
+      height: 48px;
+      background: var(--gold);
+      color: var(--cream);
+      border: none;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.4s ease;
+      z-index: 200;
+      box-shadow: 0 4px 20px rgba(200,162,75,0.35);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .back-to-top:hover {
+      background: var(--gold-light);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(200,162,75,0.5);
+    }
   </style>
 </head>
 <body>
@@ -1433,10 +1495,9 @@
     <canvas id="opening-canvas"></canvas>
     <div class="opening-center">
       <div class="op-names">
-        <div class="op-name" id="op-nipun"><span>N</span><span>I</span><span>P</span><span>U</span><span>N</span></div>
-        <div class="op-name" id="op-ekak"><span>K</span><span>U</span><span>M</span><span>A</span><span>R</span><span>A</span></div>
-        <div class="op-amp" id="op-amp">&amp;</div>
-        <div class="op-name" id="op-hashintha"><span>H</span><span>A</span><span>S</span><span>H</span><span>I</span><span>N</span><span>T</span><span>H</span><span>A</span></div>
+        <div class="op-name" id="op-nipun">Nipun</div>
+          <div class="op-amp" id="op-amp">&amp;</div>
+          <div class="op-name" id="op-hashintha">Hashintha</div>
       </div>
       <div class="op-line" id="op-line"></div>
       <div class="op-subtitle" id="op-subtitle">We Are Getting Married</div>
@@ -1470,8 +1531,8 @@
     <section id="hero">
       <div class="hero-bg">
         <img
-          src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1800&q=80&auto=format"
-          alt="Luxury wedding ceremony"
+          src="assets/images/flower bouquet.jpg"
+          alt="Nipun & Hashintha Wedding — Hillview Resort"
           id="hero-img"
         >
       </div>
@@ -1480,12 +1541,12 @@
       <div class="hero-content">
         <div class="hero-eyebrow" id="h-eyebrow">20 · November · 2026 · Sri Lanka</div>
         <h1 class="hero-names" id="h-names">
-          <span class="name-n">Nipun</span>
-          <span class="connector">and</span>
-          <span class="name-h">Hashintha</span>
+          <span class="name-groom">Nipun</span>
+          <span class="connector" aria-hidden="true">&amp;</span>
+          <span class="name-bride">Hashintha</span>
         </h1>
         <div class="hero-divider" id="h-div"></div>
-        <div class="hero-date" id="h-date">Hillview Resort, Geoffrey Bawa Heritage</div>
+        <div class="hero-date" id="h-date">Hillview Resort</div>
         <div class="hero-venue-text" id="h-venue">Dharga Town, Sri Lanka</div>
 
         <div class="hero-countdown" id="h-cd">
@@ -1637,23 +1698,23 @@
 
       <div class="gallery-grid">
         <div class="gallery-item reveal" onclick="openLightbox(this)">
-          <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=80&auto=format" alt="Ceremony" loading="lazy">
+          <img src="assets/images/ceremony.png" alt="Ceremony" loading="lazy">
           <div class="gallery-item-overlay"><span class="gallery-caption">The Sacred Ceremony</span></div>
         </div>
         <div class="gallery-item reveal" style="transition-delay:0.1s" onclick="openLightbox(this)">
-          <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=900&q=80&auto=format" alt="Couple" loading="lazy">
+          <img src="assets/images/couple.jpg" alt="Couple" loading="lazy">
           <div class="gallery-item-overlay"><span class="gallery-caption">Together Forever</span></div>
         </div>
         <div class="gallery-item reveal" style="transition-delay:0.15s" onclick="openLightbox(this)">
-          <img src="https://images.unsplash.com/photo-1512678080530-7760d81faba6?w=900&q=80&auto=format" alt="Rings" loading="lazy">
+          <img src="assets/images/rings.png" alt="Rings" loading="lazy">
           <div class="gallery-item-overlay"><span class="gallery-caption">Eternal Vows</span></div>
         </div>
         <div class="gallery-item reveal" style="transition-delay:0.2s" onclick="openLightbox(this)">
-          <img src="https://images.unsplash.com/photo-1525772764200-be829a350797?w=900&q=80&auto=format" alt="Reception" loading="lazy">
+          <img src="assets/images/reception.png" alt="Reception" loading="lazy">
           <div class="gallery-item-overlay"><span class="gallery-caption">Celebration Night</span></div>
         </div>
         <div class="gallery-item reveal" style="transition-delay:0.25s" onclick="openLightbox(this)">
-          <img src="../assets/images/pool.jpg" alt="Pool at Hillview Resort" loading="lazy">
+          <img src="assets/images/pool.jpg" alt="Pool at Hillview Resort" loading="lazy">
           <div class="gallery-item-overlay"><span class="gallery-caption">Pool at Hillview Resort</span></div>
         </div>
       </div>
@@ -1664,6 +1725,7 @@
       <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close lightbox">×</button>
       <img id="lightbox-img" src="" alt="">
     </div>
+<button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
 
     <!-- Lightbox Responsive Styles -->
     <style>
@@ -1768,7 +1830,7 @@
     ============================================= -->
     <section id="venue">
       <div class="venue-image-side">
-        <img src="../assets/images/hillviewhall.jpeg" alt="Hillview Resort">
+        <img src="assets/images/hillviewhall.jpeg" alt="Hillview Resort">
       </div>
       <div class="venue-info-side">
         <div class="reveal">
@@ -1941,7 +2003,7 @@
       <div class="contact-grid">
         <div class="contact-card reveal">
           <div class="contact-avatar">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80&auto=format" alt="Nipun">
+            <img src="assets/images/Nipun.jpg" alt="Nipun">
           </div>
           <div class="contact-role">Groom</div>
           <div class="contact-name">Nipun</div>
@@ -2033,28 +2095,28 @@
     }
     loop();
 
-    // Stagger letter reveal
-    function revealLetters(el, delay) {
-      const spans = el.querySelectorAll('span');
-      spans.forEach((s, i) => {
-        setTimeout(() => {
-          s.style.transition = `opacity 0.4s ease, transform 0.5s cubic-bezier(0.34,1.56,0.64,1)`;
-          s.style.opacity = '1';
-          s.style.transform = 'translateY(0)';
-        }, delay + i * 80);
-      });
+    // Simple fade-in for opening names and ampersand
+    function fadeInElement(id, delay) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      setTimeout(() => {
+        el.style.transition = 'opacity 0.8s cubic-bezier(0.25,1,0.5,1), transform 0.8s cubic-bezier(0.25,1,0.5,1)';
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }, delay);
     }
 
-    // Sequence
-    setTimeout(() => revealLetters(document.getElementById('op-nipun'), 0), 400);
+    // Sequence using new IDs
+    fadeInElement('op-nipun', 400);
     setTimeout(() => {
       const amp = document.getElementById('op-amp');
       amp.style.transition = 'all 0.6s cubic-bezier(0.34,1.56,0.64,1)';
       amp.style.opacity = '1';
       amp.style.transform = 'scale(1)';
     }, 900);
-    setTimeout(() => revealLetters(document.getElementById('op-hashintha'), 0), 1100);
+    fadeInElement('op-hashintha', 1100);
 
+    // Expand line and reveal other elements as before
     setTimeout(() => {
       const line = document.getElementById('op-line');
       line.style.transition = 'width 0.9s cubic-bezier(0.25,1,0.5,1)';
@@ -2332,6 +2394,18 @@
     }
   }
   addPetals();
+
+  /* =============================================
+     BACK TO TOP
+  ============================================= */
+  (function() {
+    const btt = document.getElementById('back-to-top');
+    if (!btt) return;
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+  })();
   </script>
 
 </body>
