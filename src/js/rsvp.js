@@ -75,7 +75,7 @@ function handleWhatsAppClick(e) {
   e.preventDefault();
   
   const message = encodeURIComponent(
-    'Hi Nipun & Hashintha, I\'d like to RSVP for your wedding on 20 Nov 2026. Please add me to the guest list!'
+    'Hi Nipun & Hashintha, I\'d like to RSVP for your wedding on 02 August 2026. Please add me to the guest list!'
   );
   
   window.open(`https://wa.me/94716510928?text=${message}`, '_blank');
@@ -86,7 +86,7 @@ function handleEmailClick(e) {
   
   const subject = encodeURIComponent('RSVP for Nipun & Hashintha\'s Wedding');
   const body = encodeURIComponent(
-    'Dear Nipun & Hashintha,\n\nI would like to confirm my attendance at your wedding on November 20, 2026.\n\nDetails:\n- Name: [Your Name]\n- Phone: [Your Phone]\n- Guests: [Number of Guests]\n- Dietary Requirements: [Any requirements]\n\nLooking forward to celebrating with you!\n\nBest regards,\n[Your Name]'
+    'Dear Nipun & Hashintha,\n\nI would like to confirm my attendance at your wedding on 02 August 2026.\n\nDetails:\n- Name: [Your Name]\n- Phone: [Your Phone]\n- Guests: [Number of Guests]\n- Dietary Requirements: [Any requirements]\n\nLooking forward to celebrating with you!\n\nBest regards,\n[Your Name]'
   );
   
   window.location.href = `mailto:nipun@example.com?subject=${subject}&body=${body}`;
